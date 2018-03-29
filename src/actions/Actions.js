@@ -3,23 +3,23 @@
 import Dispatcher from '../flux/Dispatcher';
 import actionTypes from './actionTypes';
 
-export default class Actions {
-  static send(data) {
+export default {
+  send(data) {
     Dispatcher.dispatch({
       data,
       type: actionTypes.SEND
     });
-  }
-  static log(data) {
+  },
+  log(data) {
     Dispatcher.dispatch({
       data,
       type: actionTypes.LOG
     });
-  }
-  static clearLog(data) {
+  },
+  clearLog(data) {
     Dispatcher.dispatch({
       data,
       type: actionTypes.CLEAR_LOG
     });
   }
-}
+};
