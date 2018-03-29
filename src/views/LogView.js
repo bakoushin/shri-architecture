@@ -4,7 +4,7 @@ import LogStore from '../stores/LogStore';
 
 export default class LogView {
   constructor(selector) {
-    this._element = document.querySelector(selector);
+    this._element = document.querySelector('.log');
     LogStore.addChangeListener(this.onLogStoreChange.bind(this));
   }
   render() {

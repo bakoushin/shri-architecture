@@ -5,7 +5,7 @@ import MessageStore from '../stores/MessageStore';
 
 export default class MainView {
   constructor(selector) {
-    this._element = document.querySelector(selector);
+    this._element = document.querySelector('.view-stub');
     this._label = this._element.querySelector('.view-stub__label');
     this._input = this._element.querySelector('.view-stub__input');
     this._apply = this._element.querySelector('.view-stub__apply');
