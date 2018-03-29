@@ -1,7 +1,8 @@
-"use strict";
+'use strict';
 
 import Store from "../flux/Store";
-import actionTypes from "./actionTypes";
+import Actions from "../actions/Actions";
+import actionTypes from "../actions/actionTypes";
 
 class MessageStore extends Store {
   constructor() {
@@ -11,9 +12,14 @@ class MessageStore extends Store {
   onDispatch({ type, data }) {
     switch (type) {
       case actionTypes.SEND:
+        Actions.log(`MessageStore: action ${type}: "${data}" dispatched`);
+        Actions.log(`MessageStore: sending data to server...`);
         this.sendToServer(data)
           .then(data => {
-            this._message = data;
+            Actions.log(`MessageStore: got server response, updating data`);
+            this.setMessage(data);
+            Actions.log(`MessageStore: change event emitted`);
+            this.emitChange();
           });
         break;
     }
@@ -21,11 +27,14 @@ class MessageStore extends Store {
   getMessage() {
     return this._message;
   }
+  setMessage(data) {
+    this._message = data;
+  }
   sendToServer(data) {
-    const DELAY = 500;
+    const DELAY = 1000;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(data);
+        Actions.log(`SERVER: here is my response: "${data}"`);
         resolve(data);
       }, DELAY);
     });

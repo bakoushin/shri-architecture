@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import Dispatcher from "./Dispatcher";
 
@@ -6,19 +6,16 @@ export default class Store {
   constructor() {
     if (typeof this.onDispatch !== "function") {
       throw new Error(
-        `${this.constructor.name} must implement "onDispatch" method`
+        `${this.constructor.name}: onDispatch method must be implemented`
       );
     }
-
     this.dispatchHandler = this.dispatchHandler.bind(this);
     Dispatcher.register(this.dispatchHandler);
-
     this._changeListeners = [];
     this.removeChangeListener = this.removeChangeListener.bind(this);
   }
   dispatchHandler(action) {
     this.onDispatch(action);
-    this.emitChange();
   }
   emitChange() {
     this._changeListeners.forEach(listener => listener());
