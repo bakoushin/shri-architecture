@@ -1,15 +1,15 @@
 'use strict';
 
-import Actions from "../actions/Actions";
-import MessageStore from "../stores/MessageStore";
+import Actions from '../actions/Actions';
+import MessageStore from '../stores/MessageStore';
 
 export default class MainView {
   constructor(selector) {
     this._element = document.querySelector(selector);
-    this._label = this._element.querySelector(".view-stub__label");
-    this._input = this._element.querySelector(".view-stub__input");
-    this._apply = this._element.querySelector(".view-stub__apply");
-    this._apply.addEventListener("click", this.onApplyClick.bind(this));
+    this._label = this._element.querySelector('.view-stub__label');
+    this._input = this._element.querySelector('.view-stub__input');
+    this._apply = this._element.querySelector('.view-stub__apply');
+    this._apply.addEventListener('click', this.onApplyClick.bind(this));
     MessageStore.addChangeListener(this.onMessageStoreChange.bind(this));
   }
   render() {

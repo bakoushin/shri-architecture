@@ -1,14 +1,14 @@
 'use strict';
 
-import Store from "../flux/Store";
-import actionTypes from "../actions/actionTypes";
+import Store from '../flux/Store';
+import actionTypes from '../actions/actionTypes';
 
 class LogStore extends Store {
   constructor() {
     super();
     this._logItems = [];
   }
-  onDispatch({ type, data }) {
+  onDispatch({type, data}) {
     switch (type) {
       case actionTypes.LOG:
         this.addItem(data);

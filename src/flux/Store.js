@@ -1,10 +1,10 @@
 'use strict';
 
-import Dispatcher from "./Dispatcher";
+import Dispatcher from './Dispatcher';
 
 export default class Store {
   constructor() {
-    if (typeof this.onDispatch !== "function") {
+    if (typeof this.onDispatch !== 'function') {
       throw new Error(
         `${this.constructor.name}: onDispatch method must be implemented`
       );

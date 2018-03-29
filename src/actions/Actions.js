@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import Dispatcher from '../flux/Dispatcher';
 import actionTypes from './actionTypes';

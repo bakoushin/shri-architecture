@@ -1,6 +1,6 @@
 'use strict';
 
-import LogStore from "../stores/LogStore";
+import LogStore from '../stores/LogStore';
 
 export default class LogView {
   constructor(selector) {
@@ -12,7 +12,7 @@ export default class LogView {
     this._element.innerHTML = '';
     this._element.innerHTML = items
       .map(item => `<div>${item}</div>`)
-      .join("\n");
+      .join('\n');
   }
   onLogStoreChange() {
     this.render();
