@@ -1,13 +1,15 @@
 'use strict';
 
+import LogPresenter from '../presenters/Log';
+
 export default class LogView {
-  constructor(controller) {
-    this.controller = controller;
-    this._element = document.querySelector('.log');
+  constructor() {
+    this.presenter = new LogPresenter(this);
+    this.element = document.querySelector('.log');
   }
   render({items}) {
-    this._element.innerHTML = '';
-    this._element.innerHTML = items
+    this.element.innerHTML = '';
+    this.element.innerHTML = items
       .map(item => `<div>${item}</div>`)
       .join('\n');
   }

@@ -1,24 +1,24 @@
 'use strict';
 
-import Model from '../mvp/Model';
+import Model from './Model';
 
 class LogModel extends Model {
   constructor() {
     super();
-    this._logItems = [];
+    this._records = [];
   }
   getAll() {
-    return this._logItems;
+    return this._records;
   }
-  addItem(data) {
+  append(data) {
     console.log(data);
-    this._logItems.push(data);
-    this.emitChange();
+    this._records.push(data);
+    this._emitChange();
   }
   clear() {
     console.clear();
-    this._logItems = [];
-    this.emitChange();
+    this._records = [];
+    this._emitChange();
   }
 }
 

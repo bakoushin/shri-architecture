@@ -1,6 +1,6 @@
 'use strict';
 
-import Model from '../mvp/Model';
+import Model from './Model';
 import log from './Log';
 
 class MessageModel extends Model {
@@ -12,22 +12,19 @@ class MessageModel extends Model {
     return this._message;
   }
   setMessage(data) {
-    this._message = data;
-  }
-  saveMessage(data) {
-    log.addItem('MessageModel: got data to save, sending to server...');
-    this.sendToServer(data)
+    log.append('MessageModel: got a message, sending it to server...');
+    this._sendToServer(data)
       .then(response => {
-        this.setMessage(response);
-        log.addItem('MessageModel: server answer received, emitting change event');
-        this.emitChange();
+        log.append('MessageModel: server answer received, emitting change event');
+        this._message = response;
+        this._emitChange();
       });
   }
-  sendToServer(data) {
+  _sendToServer(data) {
     const DELAY = 1000;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        log.addItem(`SERVER: here is my response: "${data}"`);
+        log.append(`Server: here is my response: "${data}"`);
         resolve(data);
       }, DELAY);
     });

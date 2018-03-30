@@ -1,11 +1,9 @@
 'use strict';
 
-import MessageController from './controllers/Message';
-import LogController from './controllers/Log';
+import MessageView from './views/Message';
+import LogView from './views/Log';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const messageController = new MessageController();
-  const logController = new LogController();
-  messageController.renderView();
-  logController.renderView();
+  new MessageView();
+  new LogView();
 });

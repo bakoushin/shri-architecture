@@ -1,10 +1,10 @@
 'use strict';
 
-import LogController from '../controllers/Log';
+import MessagePresenter from '../presenters/Message';
 
 export default class MessageView {
-  constructor(controller) {
-    this.controller = controller;
+  constructor() {
+    this.presenter = new MessagePresenter(this);
     this.element = document.querySelector('.view-stub');
     this.label = this.element.querySelector('.view-stub__label');
     this.input = this.element.querySelector('.view-stub__input');
@@ -13,11 +13,11 @@ export default class MessageView {
   }
   render({message}) {
     this.label.textContent = `Сервер принял данные: ${message}`;
+    this.presenter.log('MessageView: happily rerendered');
   }
   onApplyClick(e) {
-    const log = new LogController();
-    log.clear();
-    log.addItem('MessageView: apply button was clicked, calling controller');
-    this.controller.onApplyClick(this);
+    this.presenter.clearLog();
+    this.presenter.log('MessageView: apply button was clicked, calling presenter');
+    this.presenter.onApplyClick(this);
   }
 }
