@@ -16,7 +16,7 @@ export default class Model {
   unregister(listener) {
     this._changeListeners.splice(this._changeListeners.indexOf(listener), 1);
   }
-  emitChange() {
+  _emitChange() {
     this._changeListeners.forEach(listener => listener());
   }
 }

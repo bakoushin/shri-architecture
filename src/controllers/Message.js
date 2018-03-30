@@ -1,13 +1,17 @@
 'use strict';
 
 import model from '../models/Message';
-import log from '../controllers/Log';
+import log from '../models/Log';
 
-class MessageController {
+export default class MessageController {
   onApplyClick(view) {
-    log.addItem('MessageController: saving message to model');
-    model.saveMessage(view.input.value);
+    log.append('MessageController: ok, saving the message in a model');
+    model.setMessage(view.input.value);
+  }
+  log(data) {
+    log.append(data);
+  }
+  clearLog() {
+    log.clear();
   }
 }
-
-export default new MessageController();

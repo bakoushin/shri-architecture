@@ -1,29 +1,29 @@
 'use strict';
 
 import model from '../models/Message';
-import controller from '../controllers/Message';
-import log from '../controllers/Log';
+import MessageController from '../controllers/Message';
 
 export default class MessageView {
-  constructor(selector) {
+  constructor() {
+    this._controller = new MessageController();
     this.element = document.querySelector('.view-stub');
     this.label = this.element.querySelector('.view-stub__label');
     this.input = this.element.querySelector('.view-stub__input');
     this.apply = this.element.querySelector('.view-stub__apply');
-    this.apply.addEventListener('click', this.onApplyClick.bind(this));
-    model.onChange(this.onModelChange.bind(this));
+    this.apply.addEventListener('click', this._onApplyClick.bind(this));
+    model.onChange(this._onModelChange.bind(this));
   }
-  render() {
+  _render() {
     const message = model.getMessage();
     this.label.textContent = `Сервер принял данные: ${message}`;
   }
-  onApplyClick(e) {
-    log.clear();
-    log.addItem('MessageView: apply button was clicked, calling controller');
-    controller.onApplyClick(this);
+  _onApplyClick(e) {
+    this._controller.clearLog();
+    this._controller.log('MessageView: apply button was clicked, calling controller');
+    this._controller.onApplyClick(this);
   }
-  onModelChange() {
-    log.addItem('MessageView: model was changed, rerendering');
-    this.render();
+  _onModelChange() {
+    this._controller.log('MessageView: model was changed, rerendering');
+    this._render();
   }
 }
