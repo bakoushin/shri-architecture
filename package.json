@@ -5,7 +5,8 @@
   "scripts": {
     "eslint": "eslint .",
     "dev": "webpack-dev-server --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "pub": "npm run build && cp -v index.html index.css script.js ../../bakoushin.github.io/shri/architecture/mvp/"
   },
   "repository": {
     "type": "git",
