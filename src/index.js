@@ -1,9 +1,9 @@
 'use strict';
 
-import MainView from './views/MainView';
-import LogView from './views/LogView';
+import MessageView from './views/Message';
+import LogView from './views/Log';
 
 document.addEventListener('DOMContentLoaded', () => {
-  new MainView();
+  new MessageView();
   new LogView();
 });
