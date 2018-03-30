@@ -1,14 +1,24 @@
 'use strict';
 
-import model from '../models/Log';
+import LogModel from '../models/Log';
+import LogView from '../views/Log';
 
-class LogController {
+export default class LogController {
+  constructor() {
+    this.view = new LogView(this);
+    LogModel.onChange(this.onModelChange.bind(this));
+  }
+  onModelChange() {
+    this.renderView();
+  }
   addItem(data) {
-    model.addItem(data);
+    LogModel.addItem(data);
   }
   clear() {
-    model.clear();
+    LogModel.clear();
+  }
+  renderView() {
+    const items = LogModel.getAll();
+    this.view.render({items});
   }
 }
-
-export default new LogController();

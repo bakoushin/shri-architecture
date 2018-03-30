@@ -1,13 +1,25 @@
 'use strict';
 
-import model from '../models/Message';
-import log from '../controllers/Log';
+import MessageModel from '../models/Message';
+import MessageView from '../views/Message';
+import LogController from '../controllers/Log';
 
-class MessageController {
+export default class MessageController {
+  constructor() {
+    this.view = new MessageView(this);
+    MessageModel.onChange(this.onModelChange.bind(this));
+    this.log = new LogController();
+  }
+  onModelChange() {
+    this.log.addItem('MessageController: model changes, rendering view');
+    this.renderView();
+  }
   onApplyClick(view) {
-    log.addItem('MessageController: saving message to model');
-    model.saveMessage(view.input.value);
+    this.log.addItem('MessageController: saving message to model');
+    MessageModel.saveMessage(view.input.value);
+  }
+  renderView() {
+    const message = MessageModel.getMessage();
+    this.view.render({message});
   }
 }
-
-export default new MessageController();

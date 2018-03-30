@@ -1,6 +1,6 @@
 'use strict';
 
-import Model from '../mvc/Model';
+import Model from '../mvp/Model';
 import log from './Log';
 
 class MessageModel extends Model {
