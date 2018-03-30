@@ -14,7 +14,7 @@ export default class MainView {
   }
   _onApplyClick(e) {
     Actions.clearLog();
-    Actions.log('MainView: action sent to Dispatcher');
+    Actions.log('MainView: apply button was clicked, sending action to Dispatcher');
     Actions.send(this._input.value);
   }
   _onMessageStoreChange() {

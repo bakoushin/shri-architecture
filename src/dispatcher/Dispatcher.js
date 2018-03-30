@@ -1,9 +1,12 @@
 'use strict';
 
+import actionTypes from './actionTypes';
+
 class Dispatcher {
   constructor() {
     this._listeners = [];
     this.unregister = this.unregister.bind(this);
+    this.actionTypes = actionTypes;
   }
   register(listener) {
     this._listeners.push(listener);
