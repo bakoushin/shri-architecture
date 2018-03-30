@@ -1,35 +1,35 @@
 'use strict';
 
-import Store from '../flux/Store';
-import actionTypes from '../actions/actionTypes';
+import Store from './Store';
+import actionTypes from '../dispatcher/actionTypes';
 
 class LogStore extends Store {
   constructor() {
     super();
-    this._logItems = [];
+    this._records = [];
   }
   onDispatch({type, data}) {
     switch (type) {
       case actionTypes.LOG:
-        this.addItem(data);
-        this.emitChange();
+        this._append(data);
+        this._emitChange();
         break;
       case actionTypes.CLEAR_LOG:
-        this.clear();
-        this.emitChange();
+        this._clear();
+        this._emitChange();
         break;
     }
   }
   getAll() {
-    return this._logItems;
+    return this._records;
   }
-  addItem(data) {
+  _append(data) {
     console.log(data);
-    this._logItems.push(data);
+    this._records.push(data);
   }
-  clear() {
+  _clear() {
     console.clear();
-    this._logItems = [];
+    this._records = [];
   }
 }
 

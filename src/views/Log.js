@@ -1,20 +1,20 @@
 'use strict';
 
-import LogStore from '../stores/LogStore';
+import LogStore from '../stores/Log';
 
 export default class LogView {
   constructor() {
     this._element = document.querySelector('.log');
-    LogStore.addChangeListener(this.onLogStoreChange.bind(this));
+    LogStore.onChange(this._onLogStoreChange.bind(this));
   }
-  render() {
+  _render() {
     const items = LogStore.getAll();
     this._element.innerHTML = '';
     this._element.innerHTML = items
       .map(item => `<div>${item}</div>`)
       .join('\n');
   }
-  onLogStoreChange() {
-    this.render();
+  _onLogStoreChange() {
+    this._render();
   }
 }

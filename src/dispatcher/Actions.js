@@ -1,6 +1,6 @@
 'use strict';
 
-import Dispatcher from '../flux/Dispatcher';
+import Dispatcher from './Dispatcher';
 import actionTypes from './actionTypes';
 
 export default {
