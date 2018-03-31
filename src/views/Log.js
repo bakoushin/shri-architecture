@@ -8,7 +8,6 @@ export default class LogView {
     this.element = document.querySelector('.log');
   }
   render({items}) {
-    this.element.innerHTML = '';
     this.element.innerHTML = items
       .map(item => `<div>${item}</div>`)
       .join('\n');
