@@ -9,7 +9,6 @@ export default class LogView {
   }
   _render() {
     const items = model.getAll();
-    this.element.innerHTML = '';
     this.element.innerHTML = items
       .map(item => `<div>${item}</div>`)
       .join('\n');
