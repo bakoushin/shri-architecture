@@ -8,14 +8,14 @@ export default class MessagePresenter {
     this._view = view;
     model.onChange(this._onModelChange.bind(this));
   }
-  onApplyClick(view) {
+  onApplyClick() {
     log.append('MessagePresenter: ok, saving the message in a model');
     model.setMessage(this._view.input.value);
   }
   log(data) {
     log.append(data);
   }
-  clearLog(data) {
+  clearLog() {
     log.clear();
   }
   _onModelChange() {

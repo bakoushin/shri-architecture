@@ -18,6 +18,6 @@ export default class MessageView {
   onApplyClick(e) {
     this.presenter.clearLog();
     this.presenter.log('MessageView: apply button was clicked, calling presenter');
-    this.presenter.onApplyClick(this);
+    this.presenter.onApplyClick();
   }
 }
