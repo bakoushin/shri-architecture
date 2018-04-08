@@ -1,5 +1,3 @@
-'use strict';
-
 import Model from './Model';
 import log from './Log';
 

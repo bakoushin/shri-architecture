@@ -1,5 +1,3 @@
-'use strict';
-
 import LogPresenter from '../presenters/Log';
 
 export default class LogView {

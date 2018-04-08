@@ -1,5 +1,3 @@
-'use strict';
-
 import MessagePresenter from '../presenters/Message';
 
 export default class MessageView {
