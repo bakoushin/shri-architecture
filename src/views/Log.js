@@ -1,5 +1,3 @@
-'use strict';
-
 import LogStore from '../stores/Log';
 
 export default class LogView {

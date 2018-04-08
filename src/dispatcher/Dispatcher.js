@@ -1,5 +1,3 @@
-'use strict';
-
 import actionTypes from './actionTypes';
 
 class Dispatcher {

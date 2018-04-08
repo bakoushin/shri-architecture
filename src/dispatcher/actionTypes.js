@@ -1,5 +1,3 @@
-'use strict';
-
 export default {
   SEND: 'SEND',
   LOG: 'LOG',

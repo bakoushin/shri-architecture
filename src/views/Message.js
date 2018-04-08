@@ -1,5 +1,3 @@
-'use strict';
-
 import Actions from '../dispatcher/Actions';
 import MessageStore from '../stores/Message';
 
