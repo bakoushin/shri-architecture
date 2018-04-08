@@ -1,5 +1,3 @@
-'use strict';
-
 import model from '../models/Log';
 
 export default class LogView {
